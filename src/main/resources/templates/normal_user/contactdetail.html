@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal_user/base::Layout(~{::section})">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Details</title>
+</head>
+
+<body>
+  <section>
+    <div class="card mr-3 ml-3">
+      <div class="card-body">
+        <div class="container text-center">
+          <img style="height:200px;width:200px;" class="profile-photo" src="" th:src="@{'/image/'+${contactInfo.image}}"
+            alt="profile photo">
+          <h3><span th:text="${contactInfo.name}"></span><span th:text="' '+${contactInfo.surname}"></span></h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <!-- <th scope="col">name</th> -->
+                <th scope="col">email</th>
+                <th scope="col">phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- <td>Mark</td> -->
+                <td th:text="${contactInfo.email}"></td>
+                <td th:text="${contactInfo.phone}">@</td>
+              </tr>
+            </tbody>
+          </table>
+          <div ">
+          <button style="color:black;background-color: red;">Delete Contact</button>
+        </div>
+        <div">
+          <button style="background-color: rgb(255, 250, 205)">Update Contact</button> 
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

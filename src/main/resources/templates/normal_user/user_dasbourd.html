@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal_user/base::Layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <section>
+        <h2 style="width: 70%;">Pay For Store Contacts</h2>
+         <input id="payment_Field" style="width: 90%; height: 30px;" type="text" class="form-controle">
+         <div class="container text-center mt-2">
+            <button  onclick="paymentStart()" class="btn btn-success btn-block">PAY</button>
+         </div>
+
+
+        <script>
+            $(document).ready(() => {
+                $(".item").removeClass("active");
+                $("#home-link").addClass("active");
+            });
+
+        </script>
+    </section>
+    <script>
+
+    </script>
+</body>
+
+</html>

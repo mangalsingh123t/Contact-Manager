@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal_user/base::Layout(~{::section})">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Contacts Page</title>
+</head>
+
+<body>
+  <section>
+
+    <!-- Search Field -->
+    <!-- <div style="margin-bottom: 20px;" class="input-group">
+        <div class="form-outline w-50" data-mdb-input-init>
+            <input  type="search" id="form1" class="form-control" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+     -->
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center">Your All Contacts</h1>
+
+        <!-- Search field -->
+        <div class="search-container my-4">
+          <input onkeyup="search()" type="text" class="form-control" id="search-input"
+            placeholder="Search Your Contacts">
+          <!-- This attribute is an event handler that specifies a JavaScript function to be executed when the keyup event occurs. The keyup event is triggered when a key on the keyboard is released after being pressed. -->
+          <div class="search-result" id="#search-result">
+           
+
+          </div>
+        </div>
+
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">name</th>
+              <th scope="col">email</th>
+              <th scope="col">phone</th>
+              <th scope="col">action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="c, iterStat : ${contacts}">
+              <th scope="row" th:text="${iterStat.index + 1}"></th>
+              <td><img class="profile-photo" src="" th:src="@{'/image/'+${c.image}}" alt="profile photo">
+                <a href="" th:href="@{'/user/contact/'}+${c.cid}"><span th:text="${c.name}"></span></a>
+              </td>
+              <td th:text="${c.email}"></td>
+              <td th:text="${c.phone}"></td>
+              <td>
+                <a th:href="@{'/user/deletecontact/'}+${c.cid}"><button><i th:if="${session.message}"
+                      th:classappend="${session.message.type}" class="fa-solid fa-trash"></i></button></a>
+                <a href="" th:href="@{'/user/update_contact/'}+${c.cid}"> <button><i
+                      class="fa-solid fa-pen-to-square"></i></button> </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li th:if="${currentpage!=0}" class="page-item"><a class="page-link"
+                th:href="@{'/user/show-contacts/'+${currentpage-1}}" href="#">Previous</a></li>
+            <li th:classappend="${currentpage==i-1?'active':''}" th:each="i : ${#numbers.sequence(1,totalpages)}"
+              class="page-item"><a class="page-link" th:href="@{'/user/show-contacts/'+${i-1}}" href="#"><span
+                  th:text="${i}"></span></a></li>
+            <li th:if="${currentpage+1!=totalpages}" class="page-item"><a class="page-link"
+                th:href="@{'/user/show-contacts/'+${currentpage+1}}" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

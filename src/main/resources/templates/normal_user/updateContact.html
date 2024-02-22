@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal_user/base::Layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Contact Page</title>
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center">Update Contact</h1>
+                <div class="container-fluid mt-1">
+                    <div class="row">
+                       <div class="col-md-10 offset-md-1">
+                       <form action="#" th:object="${contact}"
+                       enctype="multipart/form-data"
+                       method="post"
+                       th:action="@{'/user/update-contact/'+${contact.cid}}"
+                       class="mt-2"
+                       >
+                    <!-- first nname -->
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <!-- plus ke icon ke liye -->
+                    <i class="fa fa-user-alt"></i>
+                </div>
+            </div>
+        <input th:value="${contact.name}" type="text" id="firstName" name="name" placeholder="Enter Name Here" class="form-control">
+            
+        </div>
+    
+          <!-- surname  -->
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <!-- plus ke icon ke liye -->
+                    <i class="fa fa-user-alt"></i>
+                </div>
+            </div>
+        <input th:value="${contact.surname}" type="text" id="surname" name="surname" placeholder="Enter  Your Surname" class="form-control">
+        </div>
+    
+         <!--phone  -->
+         <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <!-- plus ke icon ke liye -->
+                    <i class="fa fa-phone"></i>
+                </div>
+            </div>
+        <input th:value="${contact.phone}" type="number" id="phone" name="phone" placeholder="Enter phone number" class="form-control">
+        </div>
+    
+        <!--email  -->
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text mr-3">
+                    <!-- plus ke icon ke liye -->
+                   @
+                </div>
+            </div>
+        <input th:value="${contact.email}" type="email" id="email" name="email" placeholder="Enter Your Email" class="form-control">
+        </div>
+    
+             <!--work  -->
+             <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text mr-3"> 
+                        <!-- plus ke icon ke liye -->
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                </div>
+            <input th:value="${contact.work}" type="text" id="work" name="work" placeholder="Enter your work" class="form-control">
+            </div>
+    
+    
+            <!--discription  -->
+            <div  class="form-group mt-3">
+                <textarea th:text="${contact.discription}" name="discription" id="discription"  class="form-control" rows="15" placeholder="Enter Your Contact Description"></textarea>
+            </div> 
+            
+            <div class="container">
+             <img class="profile-photo" style="width: 250px;height: 250px;"  th:src="@{'/image/'+${contact.image}}" alt="profileimage">
+            </div> 
+             <p style="font-weight: bold;">If you want to Upadte Image please Select Image</p>
+            <!-- image -->
+            <div class="custom-file">
+                <input type="file" name="profileimage">
+            </div>
+    
+            <div class="container text-center" style="margin-top: 20px;" >
+                <button class="btn btn-outline-primary">Update Contact</button>
+            </div>
+    
+                       </form>
+    
+                       </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </section>
+</body>
+
+</html>
